@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="icon2.png">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanEV | Pakistan's Mobility Revolution</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(241, 245, 249, 1);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .page-view {
+            display: none;
+        }
+        .page-view.active {
+            display: block;
+        }
+
+        /* Image placeholder styling */
+        .img-placeholder {
+            background-color: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+
+        /* Floating/Dancing Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-dance {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 selection:bg-green-100 selection:text-green-800">
+
+    <!-- Navbar -->
+    <header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-6">
+        <nav class="container mx-auto px-6 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tight cursor-pointer" onclick="showView('home')">
+                Urban<span class="text-green-600">EV</span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#tech" class="text-sm font-medium hover:text-green-600 transition-colors nav-link">Technology</a>
+                <a href="#careers" class="text-sm font-medium hover:text-green-600 transition-colors nav-link">Careers</a>
+                <a href="#contact" class="text-sm font-medium hover:text-green-600 transition-colors nav-link">Contact</a>
+            </div>
+
+            <button class="md:hidden" id="menu-btn">
+                <i data-lucide="menu" id="menu-icon"></i>
+            </button>
+        </nav>
+
+        <div id="mobile-menu" class="hidden bg-white border-t border-slate-100 px-6 py-4 flex flex-col space-y-4 shadow-xl">
+            <a href="#tech" class="text-lg font-medium mobile-link">Technology</a>
+            <a href="#careers" class="text-lg font-medium mobile-link">Careers</a>
+            <a href="#contact" class="text-lg font-medium mobile-link">Contact</a>
+        </div>
+    </header>
+
+    <!-- MAIN HOME VIEW -->
+    <main id="home-view" class="page-view active">
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-up visible">
+                    <span class="inline-block py-1 px-3 rounded-full bg-green-50 text-green-700 text-xs font-bold tracking-wider uppercase mb-6">
+                        Empowering Pakistan's Roadways
+                    </span>
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-8">
+                        Join the Mobility <br />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400">Revolution.</span>
+                    </h1>
+                    <p class="text-xl text-slate-600 mb-10 max-w-lg leading-relaxed">
+                        Building lightweight, solar-assisted electric vehicles designed for local innovation and a sustainable future.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button class="flex items-center justify-center space-x-2 bg-green-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg shadow-green-200 hover:bg-green-700 transition-all active:scale-95">
+                            <i data-lucide="download" size="18"></i>
+                            <span>Download Pitch Deck</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hero Image Slot - Resized smaller + DANCING ANIMATION -->
+                <div class="relative fade-in-up visible flex justify-center md:justify-end" style="transition-delay: 200ms;">
+                    <div class="aspect-[4/3] w-full max-w-md img-placeholder shadow-2xl relative z-10 animate-dance">
+                        <!-- Add your main vehicle image URL in the src below -->
+                        <img id="hero-image" src="product.png" alt="UrbanEV Main Vehicle" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Decorative background element -->
+                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-green-100 rounded-2xl -z-0"></div>
+                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-green-50 rounded-full -z-10 blur-3xl opacity-60"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Innovation Section -->
+        <section id="tech" class="py-24 bg-slate-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-20 fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Core Innovation: Solar + Electric</h2>
+                    <div class="w-20 h-1.5 bg-green-600 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow group fade-in-up">
+                        <div class="mb-6 p-4 bg-green-50 w-fit rounded-2xl group-hover:scale-110 transition-transform">
+                            <i data-lucide="sun" class="text-green-600 h-8 w-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Solar-Assisted Charging</h3>
+                        <p class="text-slate-600 leading-relaxed">Integrated PV cells extend range by up to 20% daily using Pakistan's abundant sunlight.</p>
+                    </div>
+                    <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow group fade-in-up" style="transition-delay: 100ms;">
+                        <div class="mb-6 p-4 bg-green-50 w-fit rounded-2xl group-hover:scale-110 transition-transform">
+                            <i data-lucide="zap" class="text-green-600 h-8 w-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Lightweight & Efficient</h3>
+                        <p class="text-slate-600 leading-relaxed">Aerodynamic carbon-composite chassis designed for maximum energy conservation.</p>
+                    </div>
+                    <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow group fade-in-up" style="transition-delay: 200ms;">
+                        <div class="mb-6 p-4 bg-green-50 w-fit rounded-2xl group-hover:scale-110 transition-transform">
+                            <i data-lucide="settings" class="text-green-600 h-8 w-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Modular Battery System</h3>
+                        <p class="text-slate-600 leading-relaxed">Swappable power units compatible with upcoming charging networks across major cities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Engineering Section -->
+        <section class="py-24 overflow-hidden">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                <!-- Technical Image Slot -->
+                <div class="order-2 md:order-1 fade-in-up">
+                    <div class="aspect-video img-placeholder shadow-inner">
+                        <!-- Add your technical schematic or detail image URL in the src below -->
+                        <img id="tech-image" src="urbanEv.png" alt="UrbanEV Technical Detail" class="w-full h-full object-cover">
+                    </div>
+                    <p class="mt-4 text-center italic text-slate-500 text-sm">
+                        “Designed from the ground up for Pakistan’s roads and climate.”
+                    </p>
+                </div>
+                <div class="order-1 md:order-2 fade-in-up">
+                    <h2 class="text-4xl font-bold mb-8 leading-tight">Precision Engineering for Local Conditions</h2>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        We aren't just importing technology—we're adapting it. Our engineers focus on heat resilience, dust filtration, and high-torque performance required for the South Asian urban landscape.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center space-x-3 font-medium">
+                            <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                <i data-lucide="chevron-right" class="h-3.5 w-3.5"></i>
+                            </div>
+                            <span>Heat-resistant circuitry</span>
+                        </li>
+                        <li class="flex items-center space-x-3 font-medium">
+                            <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                <i data-lucide="chevron-right" class="h-3.5 w-3.5"></i>
+                            </div>
+                            <span>Locally sourced sustainable components</span>
+                        </li>
+                        <li class="flex items-center space-x-3 font-medium">
+                            <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                <i data-lucide="chevron-right" class="h-3.5 w-3.5"></i>
+                            </div>
+                            <span>IP67 Dust & Water protection</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Careers Section -->
+        <section id="careers" class="py-24 bg-slate-50">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-16 fade-in-up">
+                        <h2 class="text-4xl font-bold mb-6">Join the UrbanEV Team</h2>
+                        <p class="text-lg text-slate-600">
+                            Help us solve the logistics and environmental challenges of the next decade. We're looking for bold thinkers who want to make a tangible impact.
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-6">
+                        <div onclick="openJob('Mechatronics Engineer')" class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:border-green-200 transition-all cursor-pointer group fade-in-up hover:shadow-md">
+                            <h4 class="text-green-600 font-bold text-lg mb-3">Mechatronics Engineer</h4>
+                            <p class="text-slate-500 text-sm mb-6 leading-relaxed">Focus on powertrain and solar integration systems.</p>
+                            <span class="text-slate-900 font-semibold flex items-center group-hover:text-green-600 transition-colors">
+                                Apply Now <i data-lucide="chevron-right" class="ml-1 h-4 w-4"></i>
+                            </span>
+                        </div>
+                        <div onclick="openJob('Software Engineer')" class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:border-green-200 transition-all cursor-pointer group fade-in-up hover:shadow-md" style="transition-delay: 100ms;">
+                            <h4 class="text-green-600 font-bold text-lg mb-3">Software Engineer</h4>
+                            <p class="text-slate-500 text-sm mb-6 leading-relaxed">Building the OS for Pakistan's first connected EV fleet.</p>
+                            <span class="text-slate-900 font-semibold flex items-center group-hover:text-green-600 transition-colors">
+                                Apply Now <i data-lucide="chevron-right" class="ml-1 h-4 w-4"></i>
+                            </span>
+                        </div>
+                        <div onclick="openJob('Vehicle Engineer')" class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:border-green-200 transition-all cursor-pointer group fade-in-up hover:shadow-md" style="transition-delay: 200ms;">
+                            <h4 class="text-green-600 font-bold text-lg mb-3">Vehicle Engineer</h4>
+                            <p class="text-slate-500 text-sm mb-6 leading-relaxed">Structural design and chassis optimization.</p>
+                            <span class="text-slate-900 font-semibold flex items-center group-hover:text-green-600 transition-colors">
+                                Apply Now <i data-lucide="chevron-right" class="ml-1 h-4 w-4"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JOB APPLICATION VIEW -->
+    <main id="job-view" class="page-view pt-32 pb-24">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <button onclick="showView('home')" class="flex items-center text-slate-500 hover:text-green-600 transition-colors mb-12 font-medium">
+                <i data-lucide="arrow-left" class="mr-2 h-5 w-5"></i> Back to Careers
+            </button>
+            
+            <div class="mb-12">
+                <span class="text-green-600 font-bold tracking-wider text-xs uppercase mb-3 block">Engineering Roles</span>
+                <h1 id="selected-job-title" class="text-4xl md:text-5xl font-bold mb-6">Mechatronics Engineer</h1>
+                <p class="text-slate-600 text-lg leading-relaxed">
+                    As a <span class="job-placeholder">Mechatronics Engineer</span> at UrbanEV, you will bridge the gap between mechanical systems and electronic control. You'll be instrumental in developing our solar-assisted powertrain and ensuring seamless communication between sensors, batteries, and the drive system.
+                </p>
+            </div>
+
+            <div class="bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-100">
+                <h3 class="text-2xl font-bold mb-8">Submit Your Application</h3>
+                <form id="apply-form" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-slate-700">Full Name</label>
+                            <input type="text" required placeholder="Ali Ahmed" class="w-full px-5 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-slate-700">Email Address</label>
+                            <input type="email" required placeholder="ali@example.pk" class="w-full px-5 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-all">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-slate-700">Portfolio / LinkedIn URL</label>
+                        <input type="url" placeholder="https://linkedin.com/in/..." class="w-full px-5 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-all">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-slate-700">Upload CV (PDF)</label>
+                        <div class="relative group">
+                            <input type="file" id="cv-upload" accept=".pdf" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                            <div class="border-2 border-dashed border-slate-300 rounded-xl py-8 flex flex-col items-center justify-center group-hover:border-green-500 group-hover:bg-green-50/50 transition-all">
+                                <i data-lucide="upload-cloud" class="text-slate-400 mb-2 group-hover:text-green-600"></i>
+                                <span id="upload-text" class="text-sm font-medium text-slate-500 group-hover:text-green-600">Click or drag your CV here</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-green-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-green-200 hover:bg-green-700 transition-all active:scale-95">
+                        Send Application
+                    </button>
+                </form>
+
+                <div id="success-message" class="hidden text-center py-8">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="check" size="32"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-2">Application Sent!</h4>
+                    <p class="text-slate-500">Our hiring team will review your CV and get back to you soon.</p>
+                    <button onclick="showView('home')" class="mt-8 text-green-600 font-bold">Back to Home</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="main-footer" class="bg-white border-t border-slate-100 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-xl font-bold mb-2">
+                        Urban<span class="text-green-600">EV</span>
+                    </div>
+                    <p class="text-slate-500 text-sm max-w-xs">
+                        Building sustainable, clean, and long-term urban mobility solutions for a brighter future.
+                    </p>
+                </div>
+                <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-12 text-sm font-medium">
+                    <a href="#" class="hover:text-green-600 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-green-600 transition-colors">Press Kit</a>
+                    <a href="#" class="hover:text-green-600 transition-colors">LinkedIn</a>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-slate-50 text-center text-slate-400 text-sm">
+                © 2024 UrbanEV. All rights reserved. Registered in Islamabad, Pakistan.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function showView(viewId) {
+            const homeView = document.getElementById('home-view');
+            const jobView = document.getElementById('job-view');
+            const footer = document.getElementById('main-footer');
+            
+            window.scrollTo(0, 0);
+
+            if (viewId === 'home') {
+                homeView.classList.add('active');
+                jobView.classList.remove('active');
+                footer.classList.remove('hidden');
+                revealOnScroll();
+            } else if (viewId === 'job') {
+                homeView.classList.remove('active');
+                jobView.classList.add('active');
+                footer.classList.add('hidden'); 
+                document.getElementById('apply-form').classList.remove('hidden');
+                document.getElementById('success-message').classList.add('hidden');
+                document.getElementById('apply-form').reset();
+                document.getElementById('upload-text').innerText = "Click or drag your CV here";
+            }
+            lucide.createIcons();
+        }
+
+        function openJob(title) {
+            document.getElementById('selected-job-title').innerText = title;
+            document.querySelectorAll('.job-placeholder').forEach(el => el.innerText = title);
+            showView('job');
+        }
+
+        document.getElementById('cv-upload').addEventListener('change', function(e) {
+            if (this.files && this.files[0]) {
+                document.getElementById('upload-text').innerText = "Selected: " + this.files[0].name;
+            }
+        });
+
+        document.getElementById('apply-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mx-auto"></div>';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                e.target.classList.add('hidden');
+                document.getElementById('success-message').classList.remove('hidden');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                lucide.createIcons();
+            }, 1200);
+        });
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('glass-nav', 'py-4', 'shadow-sm');
+                navbar.classList.remove('py-6');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-4', 'shadow-sm');
+                navbar.classList.add('py-6');
+            }
+        });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link, .nav-link');
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            if (isOpen) {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('data-lucide', 'menu');
+            } else {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons();
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        function revealOnScroll() {
+            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+        }
+        revealOnScroll();
+    </script>
+</body>
+</html>
